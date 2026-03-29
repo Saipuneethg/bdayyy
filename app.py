@@ -1,21 +1,26 @@
 from flask import Flask, render_template
-import os
+from datetime import datetime
 
 app = Flask(__name__)
 
 # --- CONFIGURATION ---
-HER_NAME = "Laddu"
-UNLOCK_TIME_STR = "2026-04-03 00:00:00"
+
+# 1. Her Name
+HER_NAME = "Bestie"
+
+# 2. Time the website unlocks
+# Format: "YYYY-MM-DD HH:MM:SS"
+# Example: Midnight of March 14th, 2026 -> "2026-03-14 00:00:00"
+UNLOCK_TIME_STR = "2026-03-14 00:00:00"
 
 @app.route("/")
 def home():
+    # TEMPORARY: Unlocking the website immediately for testing!
     return render_template("index.html", name=HER_NAME)
 
-@app.route("/cringe.html")
-def cringe():
-    return render_template("cringe.html")
-
 if __name__ == "__main__":
-    # REQUIRED for deployment: Run on 0.0.0.0 and use heroku/render port
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port, debug=False)
+    print("-" * 50)
+    print(f"Birthday Server Starting!")
+    print(f"Make sure you place 11 photos named 1.jpg to 11.jpg inside 'static/photos/'")
+    print("-" * 50)
+    app.run(debug=True, port=5000)

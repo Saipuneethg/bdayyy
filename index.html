@@ -67,9 +67,7 @@
                 Orey Laddu! 🐷 April 3rd ki inka time undhi kani, nenu appude ready aipoya ninnu roast cheyadaniki! 😂 I've built something special for you... 🛠️ Prepare to be roasted! 📸💀
             </div>
 
-            <div id="lock-msg" style="margin-top: 2.5rem; color: #ce93d8; font-size: 1.25rem;">
-                Stay tuned... The surprise unlocks when the clock hits zero! 🎁✨
-            </div>
+            <button id="start-btn" class="btn pulse-btn" onclick="startExperience()" style="margin-top: 3rem; padding: 18px 45px; font-size: 1.3rem; display: none;">Let the Memories Begin! 🎁✨</button>
         </div>
     </div>
 
@@ -368,7 +366,8 @@
                 bgLayer.classList.remove("is-active");
             }
 
-            // Hide quiz, show gallery
+            // Hide countdown and quiz, show gallery
+            document.getElementById("countdown-section").style.display = "none";
             document.getElementById("quiz-section").style.display = "none";
 
             const gallery = document.getElementById("gallery-section");
@@ -430,25 +429,19 @@
         });
 
         // --- COUNTDOWN LOGIC ---
-        let hasExperienceLaunched = false;
-
         function updateTimer() {
             const targetDate = new Date("April 3, 2026 00:00:00").getTime();
             const now = new Date().getTime();
             const distance = targetDate - now;
 
-            if (distance <= 0) {
+            if (distance < 0) {
                 document.getElementById("days").innerText = "00";
                 document.getElementById("hours").innerText = "00";
                 document.getElementById("minutes").innerText = "00";
                 document.getElementById("seconds").innerText = "00";
                 
-                // If it's April 3rd and we haven't launched yet, auto-launch!
-                if (!hasExperienceLaunched) {
-                    hasExperienceLaunched = true;
-                    // Give it a tiny delay for effect
-                    setTimeout(startExperience, 1500); 
-                }
+                // Show the activation button!
+                document.getElementById("start-btn").style.display = "inline-block";
                 return;
             }
 
