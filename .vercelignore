@@ -1,0 +1,6 @@
+.git
+.streamlit
+run.bat
+.python-version
+pyproject.toml
+Pipfile.lock
