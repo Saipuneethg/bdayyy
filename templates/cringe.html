@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cringe Collection! 📸😂</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #fce4ec 0%, #fdfcfd 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            font-family: 'Outfit', sans-serif;
+        }
+        .cringe-header { margin-bottom: 2.5rem; text-align: center; }
+        .cringe-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #d81b60;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin: 0;
+        }
+        .cringe-subtitle { color: #8e6ba8; font-size: 1.2rem; }
+        .cringe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .cringe-card {
+            background: #fff;
+            padding: 1rem 1rem 3rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: rotate(var(--rot));
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .cringe-card:hover { transform: scale(1.05) rotate(0deg); z-index: 10; cursor: pointer; }
+        .cringe-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid #eee;
+        }
+        .cringe-card::after {
+            content: attr(data-caption);
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: #5b3d7a;
+        }
+        .close-btn {
+            margin-top: 3rem;
+            padding: 12px 30px;
+            background: #d81b60;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="cringe-header">
+        <h1 class="cringe-title">The "Laddu" Cringe Files! 🐷😂</h1>
+        <p class="cringe-subtitle">Proof that you're 100% a clown (but my favorite one) ❤️</p>
+        <div style="margin-top: 1.5rem; background: #fff; padding: 15px 25px; border-radius: 12px; border: 2px dashed #d81b60; font-family: 'Great Vibes', cursive; font-size: 2.1rem; color: #5b3d7a; transform: rotate(-1deg); box-shadow: 0 4px 10px rgba(0,0,0,0.05); line-height: 1.2;">
+            "Warning: Viewing these photos may cause extreme self-roasting! 🚨 I spent 5 straight hours laughing at these proofs... 😂 Nuvvu entha cover chesina, the 'Laddu' hidden logic ide! 🐷 Vintage cringe collection is officially public now! 📸"
+        </div>
+    </div>
+
+    <div class="cringe-grid">
+        <div class="cringe-card" style="--rot: -2deg;" data-caption="What was that face? 🤡">
+            <img src="{{ url_for('static', filename='photos/n1.jpeg') }}" alt="Cringe 1">
+        </div>
+        <div class="cringe-card" style="--rot: 3deg;" data-caption="Cringe Alert! 🚨">
+            <img src="{{ url_for('static', filename='photos/n2.jpeg') }}" alt="Cringe 2">
+        </div>
+        <div class="cringe-card" style="--rot: -1.5deg;" data-caption="Stop it! 😂">
+            <img src="{{ url_for('static', filename='photos/n3.jpeg') }}" alt="Cringe 3">
+        </div>
+        <div class="cringe-card" style="--rot: 2.5deg;" data-caption="Pandi Laga Unnav! 🐷">
+            <img src="{{ url_for('static', filename='photos/n4.jpeg') }}" alt="Cringe 4">
+        </div>
+        <div class="cringe-card" style="--rot: -3deg;" data-caption="Why so cute but weird? 🥰">
+            <img src="{{ url_for('static', filename='photos/n5.jpeg') }}" alt="Cringe 5" style="object-position: center top;">
+        </div>
+        <div class="cringe-card" style="--rot: 1.8deg;" data-caption="Caught in 4K! 📸">
+            <img src="{{ url_for('static', filename='photos/n6.jpeg') }}" alt="Cringe 6">
+        </div>
+    </div>
+
+    <button class="btn pulse-btn" style="margin-top: 3rem;" onclick="window.close()">Take me back, this is too much! 😂</button>
+
+    <div class="bg-hearts">
+        <svg class="heart h1" viewBox="0 0 24 24"><path fill="#d81b60" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <svg class="heart h3" viewBox="0 0 24 24"><path fill="#d81b60" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <svg class="heart h5" viewBox="0 0 24 24"><path fill="#d81b60" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </div>
+</body>
+</html>

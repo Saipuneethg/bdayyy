@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laddu's Birthday Unlock</title>
+    <!-- Use Flask static path -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Background Hearts -->
+    <div class="bg-hearts">
+        <svg class="heart h1" viewBox="0 0 24 24">
+            <path fill="#d81b60"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+        <svg class="heart h2" viewBox="0 0 24 24">
+            <path fill="#d81b60"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+        <svg class="heart h3" viewBox="0 0 24 24">
+            <path fill="#d81b60"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+        <svg class="heart h4" viewBox="0 0 24 24">
+            <path fill="#d81b60"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+        <svg class="heart h5" viewBox="0 0 24 24">
+            <path fill="#d81b60"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+        <svg class="heart h6" viewBox="0 0 24 24">
+            <path fill="#d81b60"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- PHASE 0: ADVANCE WISHES & COUNTDOWN            -->
+    <!-- ============================================== -->
+    <div id="countdown-section">
+        <video autoplay muted loop id="bg-video">
+            <source src="{{ url_for('static', filename='photos/timer video.mp4') }}" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+
+        <div class="countdown-content fade-in">
+            <h1 class="advance-title" style="margin-bottom: 2.5rem; color: #fce4ec; font-size: 3.5rem;">advance yaapppiiee bdayyy veniichreee ✨</h1>
+            <div id="timer" class="timer-grid" style="margin-bottom: 2.5rem;">
+                <div class="timer-box"><span id="days">00</span><label>Days</label></div>
+                <div class="timer-box"><span id="hours">00</span><label>Hours</label></div>
+                <div class="timer-box"><span id="minutes">00</span><label>Min</label></div>
+                <div class="timer-box"><span id="seconds">00</span><label>Sec</label></div>
+            </div>
+
+            <div class="advance-message" style="font-size: 1.6rem; font-family: 'Great Vibes', cursive; color: #fff; line-height: 1.35; padding: 0 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                Orey Laddu! 🐷 April 3rd ki inka time undhi kani, nenu appude ready aipoya ninnu roast cheyadaniki! 😂 I've built something special for you... 🛠️ Prepare to be roasted! 📸💀
+            </div>
+
+            <div id="lock-msg" style="margin-top: 2.5rem; color: #ce93d8; font-size: 1.25rem;">
+                Stay tuned... The surprise unlocks when the clock hits zero! 🎁✨
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SECTION 1: CHILDHOOD PICS & FINAL QUESTION     -->
+    <!-- ============================================== -->
+    <div id="quiz-section" style="display: none;">
+        <div class="quiz-container flip-section glass" style="margin-bottom: 3.5rem;">
+            <h1 class="quiz-title">Happy Birthday {{ name }}✨</h1>
+            <p class="quiz-subtitle">Before you unlock your special gift, here are some precious childhood memories...👻
+            </p>
+            <!-- Wall Gallery: 2 left, 1 center square, 2 right -->
+            <div class="childhood-wall-gallery">
+                <div class="wall-frame wall-tl flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img src="{{ url_for('static', filename='photos/c2.jpeg') }}" alt="Childhood 2"></div>
+                        <div class="flip-card-back">
+                            <p>👻👻👻</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wall-frame wall-bl flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img src="{{ url_for('static', filename='photos/c3.jpeg') }}" alt="Childhood 3"></div>
+                        <div class="flip-card-back">
+                            <p>selfie-taker with 2000's nokia 🤳</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wall-frame wall-center flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img src="{{ url_for('static', filename='photos/c1.jpeg') }}" alt="Childhood 1"></div>
+                        <div class="flip-card-back">
+                            <p>"Forever a Small Kidd 💖"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wall-frame wall-tr flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img src="{{ url_for('static', filename='photos/c4.jpeg') }}" alt="Childhood 4"></div>
+                        <div class="flip-card-back">
+                            <p>Gundammma 😂🥰</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wall-frame wall-br flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img src="{{ url_for('static', filename='photos/c5.jpeg') }}" alt="Childhood 5"
+                                style="object-position: center top;"></div>
+                        <div class="flip-card-back">
+                            <p>🦋😁</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Distinct Question Container -->
+        <div class="quiz-container glass final-question-container"
+            style="padding: 3.5rem 2rem; border-radius: 24px; box-shadow: 0 16px 40px rgba(91, 61, 122, 0.25); background: rgba(255,255,255,0.85); border: 2px solid rgba(142, 107, 168, 0.3);">
+            <div class="question-bg-layer" id="question-bg-layer" aria-hidden="true"></div>
+            <div id="question-box" class="question-box final-question" style="margin-top: 0;">
+                <h2 id="q-text"
+                    style="font-size: 1.9rem; line-height: 1.4; padding: 0 1rem 1.5rem; color: var(--purple-deep);">Nenn
+                    ninnu Laddu ani enduku antanu telsa ...???</h2>
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <button class="btn pulse-btn"
+                        style="background: var(--pink-soft); color: var(--purple-deep); border: 2px dashed var(--purple-mid); padding: 10px 20px; font-style: italic;"
+                        onclick="window.open('/cringe.html', '_blank')">Wait... want to see the proof first?
+                        😏📸</button>
+                </div>
+                <div id="options-container" class="options-grid options-grid-final"
+                    style="flex-direction: column; align-items: stretch; max-width: 500px; margin: 0 auto; gap: 1.25rem;">
+                    <button class="btn option-btn" style="border-radius: 16px; font-size: 1.15rem; padding: 16px;"
+                        onclick="checkAnswer(0)">enduku antey pandi laga vuntav kada 🐷🤣</button>
+                    <button class="btn option-btn" style="border-radius: 16px; font-size: 1.15rem; padding: 16px;"
+                        onclick="checkAnswer(1)">becoz ur chubby 🐻❄️</button>
+                    <button class="btn option-btn" style="border-radius: 16px; font-size: 1.15rem; padding: 16px;"
+                        onclick="checkAnswer(2)">both</button>
+                </div>
+                <p id="error-msg" class="error-msg"
+                    style="font-size: 1.2rem; border-radius: 12px; margin-top: 2rem; padding: 1rem;"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SECTION 2: THE GALLERY (Hidden until passed)   -->
+    <!-- ============================================== -->
+    <div id="gallery-section" class="gallery-container hidden">
+
+        <!-- Big Celebration Header -->
+        <header class="gallery-header">
+            <h1 class="gallery-script-title bounce-in">Finallyyy it's APRIL Third 🎉✨</h1>
+
+            <div class="wishes-panel fade-in-slow">
+                <h2 class="gallery-subtitle">Happy Birthday <span class="accent-text name-script">{{ name }}!</span></h2>
+                <p class="message-text">
+                    Orey Laddu! 🐷ninnu roast chestunte asalu kick-ey veru! 😂 Asalu nuvvu naa life lo
+                    raavadam entha pedda disaster o neeku idea undha? Just kidding bestie! You’re definitely my favorite
+                    dose of daily chaos and 'pandi' ! 🤡✨<br><br>
+                    Ee birthday ki nuvvu inka chala cringe expression-lu ivvali, so that I can update that 'Cringe
+                    Files' page until I die! 📸💀 Thank you for dealing with my 2 AM mental madness and hearing my
+                    bokka-lo logics without hanging up! I cherish our friendship more than anything (even more than a
+                    plate of extra-spicy Biryani! 🤣) 🥰🍿<br><br>
+                    Eppudu ilaage navvutu undu Laddu... because seeing your happy face reminds me that I have a
+                    permanently crazy person by my side! 😂💖 Happy Birthday to the biggest clown in my life! 🎂🎈 Let’s
+                    keep bothering each other forever! 🎉✨<br><br>
+                    <strong>May this year bring you as much happiness as you bring to others. Have the most wonderful
+                        birthday!</strong>
+                </p>
+                <button id="confetti-btn" class="btn pulse-btn confetti-btn-wide">eeevvvvvv</button>
+            </div>
+        </header>
+
+        <div class="poster-gallery-wrap fade-in-slow">
+            <div class="photo-poster-grid">
+                <!-- Photo 1 -->
+                <div class="gallery-flip-card c-far-l-t">
+                    <div class="gallery-flip-inner">
+                        <div class="gallery-front polaroid-card"><img src="{{ url_for('static', filename='photos/1.jpeg') }}" alt="Laddu 1"></div>
+                        <div class="gallery-back polaroid-card">
+                            <p>"Sampradayini subhini sudhapuusani😛</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photo 2 -->
+                <div class="gallery-flip-card c-far-l-b">
+                    <div class="gallery-flip-inner">
+                        <div class="gallery-front polaroid-card"><img src="{{ url_for('static', filename='photos/2.jpeg') }}" alt="Laddu 2"></div>
+                        <div class="gallery-back polaroid-card">
+                            <p> Two flowers together 🌸</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photo 3 -->
+                <div class="gallery-flip-card c-center">
+                    <div class="gallery-flip-inner">
+                        <div class="gallery-front polaroid-card"><img src="{{ url_for('static', filename='photos/3.jpeg') }}" alt="Laddu 3"></div>
+                        <div class="gallery-back polaroid-card" style="padding: 10px;">
+                            <img src="{{ url_for('static', filename='photos/quote.jpeg') }}" alt="Quote"
+                                style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px; background: rgba(255,255,255,0.5);">
+                        </div>
+                    </div>
+                </div>
+                <!-- Photo 5 -->
+                <div class="gallery-flip-card c-mid-t-r">
+                    <div class="gallery-flip-inner">
+                        <div class="gallery-front polaroid-card"><img src="{{ url_for('static', filename='photos/5.jpeg') }}" alt="Laddu 5"></div>
+                        <div class="gallery-back polaroid-card">
+                            <p>Aakasham lo vuntayii chukkalu ninu chostey gurtostayi kukkalu🤣🐶</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photo 7 -->
+                <div class="gallery-flip-card c-mid-t-l">
+                    <div class="gallery-flip-inner">
+                        <div class="gallery-front polaroid-card"><img src="{{ url_for('static', filename='photos/7.jpeg') }}" alt="Laddu 7"></div>
+                        <div class="gallery-back polaroid-card">
+                            <p>Puchukuuu Puchkuuuu🥰</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photo 8 -->
+                <div class="gallery-flip-card c-far-l-bb">
+                    <div class="gallery-flip-inner">
+                        <div class="gallery-front polaroid-card"><img src="{{ url_for('static', filename='photos/8.jpeg') }}" alt="Laddu 8"></div>
+                        <div class="gallery-back polaroid-card">
+                            <p>Neeli neeli aakasham nenn vunna neekosam🌚</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photo 9 -->
+                <div class="gallery-flip-card c-far-r-bb">
+                    <div class="gallery-flip-inner">
+                        <div class="gallery-front polaroid-card"><img src="{{ url_for('static', filename='photos/9.jpeg') }}" alt="Laddu 9"
+                                style="object-position: center top;"></div>
+                        <div class="gallery-back polaroid-card">
+                            <p>Tomato 🍅</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photo 10 -->
+                <div class="gallery-flip-card c-far-r-t">
+                    <div class="gallery-flip-inner">
+                        <div class="gallery-front polaroid-card"><img src="{{ url_for('static', filename='photos/10.jpeg') }}" alt="Laddu 10"
+                                style="object-position: center top;"></div>
+                        <div class="gallery-back polaroid-card">
+                            <p>Are u a lamp by any chance? Because you are lighting up everyone's life 💡 </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Photo 11 -->
+                <div class="gallery-flip-card c-far-r-b">
+                    <div class="gallery-flip-inner">
+                        <div class="gallery-front polaroid-card"><img src="{{ url_for('static', filename='photos/11.jpeg') }}" alt="Laddu 11"
+                                style="object-position: center 15%;"></div>
+                        <div class="gallery-back polaroid-card">
+                            <p> 🦋🦋🦋</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- JAVASCRIPT LOGIC                               -->
+    <!-- ============================================== -->
+    <script>
+        let option2BgTimeoutId = null;
+
+        function showOption2QuestionBackground() {
+            const layer = document.getElementById("question-bg-layer");
+            if (!layer) {
+                return;
+            }
+            if (option2BgTimeoutId !== null) {
+                clearTimeout(option2BgTimeoutId);
+            }
+            layer.classList.add("is-active");
+            option2BgTimeoutId = setTimeout(function () {
+                layer.classList.remove("is-active");
+                option2BgTimeoutId = null;
+            }, 5000);
+        }
+
+        function checkAnswer(selectedIndex) {
+            const errorMsgEl = document.getElementById("error-msg");
+            if (selectedIndex === 2) {
+                // Correct!
+                unlockGallery();
+            } else {
+                // Wrong! Add a shake animation and show error
+                if (selectedIndex === 0) {
+                    errorMsgEl.innerText = "That's not true — you're not nearly that plump.";
+                } else if (selectedIndex === 1) {
+                    errorMsgEl.innerText = "achooo 🥰";
+                    showOption2QuestionBackground();
+                }
+                errorMsgEl.style.display = "block";
+
+                const box = document.getElementById("question-box");
+                box.classList.remove("shake");
+                void box.offsetWidth; // trigger reflow to restart animation
+                box.classList.add("shake");
+            }
+        }
+
+        let quizConfettiTimeoutId = null;
+
+        function stopRandomQuizConfetti() {
+            if (quizConfettiTimeoutId !== null) {
+                clearTimeout(quizConfettiTimeoutId);
+                quizConfettiTimeoutId = null;
+            }
+        }
+
+        function fireConfettiBurst() {
+            confetti({
+                particleCount: 8,
+                angle: 60,
+                spread: 78,
+                origin: { x: 0 },
+                colors: ['#e8c4e8', '#c9a0dc', '#f5d0f0', '#b794d4', '#fce4ec']
+            });
+            confetti({
+                particleCount: 8,
+                angle: 120,
+                spread: 78,
+                origin: { x: 1 },
+                colors: ['#e1bee7', '#ce93d8', '#f8bbd9', '#b39ddb', '#f3e5f5']
+            });
+        }
+
+        function randomQuizConfettiLoop() {
+            const quiz = document.getElementById("quiz-section");
+            if (!quiz || quiz.style.display === "none") {
+                return;
+            }
+            fireConfettiBurst();
+            const delay = 2200 + Math.random() * 6200;
+            quizConfettiTimeoutId = setTimeout(randomQuizConfettiLoop, delay);
+        }
+
+        function unlockGallery() {
+            stopRandomQuizConfetti();
+            if (option2BgTimeoutId !== null) {
+                clearTimeout(option2BgTimeoutId);
+                option2BgTimeoutId = null;
+            }
+            const bgLayer = document.getElementById("question-bg-layer");
+            if (bgLayer) {
+                bgLayer.classList.remove("is-active");
+            }
+
+            // Hide quiz, show gallery
+            document.getElementById("quiz-section").style.display = "none";
+
+            const gallery = document.getElementById("gallery-section");
+            gallery.classList.remove("hidden");
+            gallery.style.display = "block";
+
+            // Force scroll to top so the main wishes are seen first
+            window.scrollTo(0, 0);
+
+            // Fire massive confetti!
+            fireConfetti();
+        }
+
+        function fireConfetti() {
+            const duration = 4 * 1000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 7,
+                    angle: 60,
+                    spread: 80,
+                    origin: { x: 0 },
+                    colors: ['#e8c4e8', '#c9a0dc', '#f5d0f0', '#b794d4', '#fce4ec']
+                });
+                confetti({
+                    particleCount: 7,
+                    angle: 120,
+                    spread: 80,
+                    origin: { x: 1 },
+                    colors: ['#e1bee7', '#ce93d8', '#f8bbd9', '#b39ddb', '#f3e5f5']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        document.getElementById('confetti-btn').addEventListener('click', fireConfetti);
+
+        function scrollPageToTop() {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+        }
+
+        document.addEventListener('DOMContentLoaded', scrollPageToTop);
+
+        window.addEventListener('load', function () {
+            scrollPageToTop();
+            randomQuizConfettiLoop();
+        });
+
+        window.addEventListener('pageshow', function (e) {
+            if (e.persisted) {
+                scrollPageToTop();
+            }
+        });
+
+        // --- COUNTDOWN LOGIC ---
+        let hasExperienceLaunched = false;
+
+        function updateTimer() {
+            const targetDate = new Date("April 3, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance <= 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                
+                // If it's April 3rd and we haven't launched yet, auto-launch!
+                if (!hasExperienceLaunched) {
+                    hasExperienceLaunched = true;
+                    // Give it a tiny delay for effect
+                    setTimeout(startExperience, 1500); 
+                }
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+
+        function startExperience() {
+            const countdown = document.getElementById("countdown-section");
+            const quiz = document.getElementById("quiz-section");
+            
+            // Fade out countdown
+            countdown.style.transition = "opacity 0.8s ease";
+            countdown.style.opacity = "0";
+            
+            setTimeout(() => {
+                countdown.style.display = "none";
+                quiz.style.display = "block";
+                scrollPageToTop();
+            }, 800);
+        }
+
+        // Initialize timer
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+    </script>
+</body>
+
+</html>
